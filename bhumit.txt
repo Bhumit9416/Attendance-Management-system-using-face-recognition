@@ -1,0 +1,2 @@
+env\Scripts\activate to activate the env and it has all files and libarires require to start 
+if to start new env install alll packages in that env and give activate code 

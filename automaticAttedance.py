@@ -11,16 +11,16 @@ import time
 import tkinter.ttk as tkk
 import tkinter.font as font
 
-haarcasecade_path = "C:\\Users\\patel\\OneDrive\\Documents\\E\\FBAS\\haarcascade_frontalface_default.xml"
+haarcasecade_path = "C:\\Users\\HP\\Downloads\\Attendance-Management-system-using-face-recognition-master (1)\\Attendance-Management-system-using-face-recognition\\haarcascade_frontalface_default.xml"
 trainimagelabel_path = (
-    "C:\\Users\\patel\\OneDrive\\Documents\\E\\FBAS\\TrainingImageLabel\\Trainner.yml"
+    "C:\\Users\\HP\\Downloads\\Attendance-Management-system-using-face-recognition-master (1)\\Attendance-Management-system-using-face-recognition\\TrainingImageLabel\\Trainner.yml"
 )
-trainimage_path = "C:\\Users\\patel\\OneDrive\\Documents\\E\\FBAS\\TrainingImage"
+trainimage_path = "C:\\Users\\HP\\Downloads\\Attendance-Management-system-using-face-recognition-master (1)\\Attendance-Management-system-using-face-recognition\\TrainingImage"
 studentdetail_path = (
-    "C:\\Users\\patel\\OneDrive\\Documents\\E\\FBAS\\StudentDetails\\studentdetails.csv"
+    "C:\\Users\\HP\\Downloads\\Attendance-Management-system-using-face-recognition-master (1)\\Attendance-Management-system-using-face-recognition\\StudentDetails\\studentdetails.csv"
 )
-attendance_path = "C:\\Users\\patel\\OneDrive\\Documents\\E\\FBAS\\Attendance"
-# for choose subject and fill attendance
+attendance_path = "C:\\Users\\HP\\Downloads\\Attendance-Management-system-using-face-recognition-master (1)\\Attendance-Management-system-using-face-recognition\\Attendance"
+
 def subjectChoose(text_to_speech):
     def FillAttendance():
         sub = tx.get()
@@ -47,7 +47,8 @@ def subjectChoose(text_to_speech):
                     )
                     Notifica.place(x=20, y=250)
                     text_to_speech(e)
-                facecasCade = cv2.CascadeClassifier(haarcasecade_path)
+                face_cascade = cv2.CascadeClassifier("C:\\Users\\HP\\Downloads\\Attendance-Management-system-using-face-recognition-master (1)\\Attendance-Management-system-using-face-recognition\\haarcascade_frontalface_default.xml")
+
                 df = pd.read_csv(studentdetail_path)
                 cam = cv2.VideoCapture(0)
                 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -56,7 +57,7 @@ def subjectChoose(text_to_speech):
                 while True:
                     ___, im = cam.read()
                     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-                    faces = facecasCade.detectMultiScale(gray, 1.2, 5)
+                    faces = face_cascade.detectMultiScale(gray, 1.2, 5)
                     for (x, y, w, h) in faces:
                         global Id
 
@@ -224,7 +225,7 @@ def subjectChoose(text_to_speech):
             text_to_speech(t)
         else:
             os.startfile(
-                f"C:\\Users\\patel\\OneDrive\\Documents\\E\\FBAS\\Attendance\\{sub}"
+                f"C:\\Users\\HP\\Downloads\\Attendance-Management-system-using-face-recognition-master (1)\\Attendance-Management-system-using-face-recognition\\Attendance\\{sub}"
             )
 
     attf = tk.Button(
